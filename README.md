@@ -29,7 +29,7 @@ This repository contains a Bash script that retrieves essential system informati
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/mac-info-script.git
+   git clone https://github.com/liusfe/mac-info-script.git
    cd mac-info-script
    ```
 2. Make the script executable:
