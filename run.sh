@@ -3,9 +3,22 @@
 # Archivo de salida
 OUTPUT_FILE="info_mac.txt"
 
+# Verificar si Homebrew está instalado
+if ! command -v brew &> /dev/null; then
+  echo "Homebrew no está instalado. Instalando Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if [ $? -ne 0 ]; then
+    echo "Error al instalar Homebrew. Aborta el script." >&2
+    exit 1
+  fi
+  echo "Homebrew instalado correctamente." >> "$OUTPUT_FILE"
+else
+  echo "Homebrew ya está instalado." >> "$OUTPUT_FILE"
+fi
+
 # Instalar herramientas necesarias
 echo "===== Instalación de herramientas necesarias ====="
-echo "Verificando herramientas requeridas..." > "$OUTPUT_FILE"
+echo "Verificando herramientas requeridas..." >> "$OUTPUT_FILE"
 
 # Instalar smartmontools
 if ! command -v smartctl &> /dev/null; then
